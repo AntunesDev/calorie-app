@@ -7,6 +7,7 @@ export async function analyzeFoodWithGemini(prompt: string) {
 
   const fullPrompt = `
 Você é um nutricionista. Sua tarefa é analisar a entrada do usuário (sobre alimentos consumidos) e retornar apenas um JSON válido, com os campos: nome, quantidade, unidade, calorias. Retorne apenas o objeto JSON correspondente ao alimento descrito.
+Seja o mais preciso possível com as calorias.
 
 Exemplo de entrada: "2 ovos cozidos"
 Exemplo de resposta: { "nome": "ovo cozido", "quantidade": 2, "unidade": "unidade", "calorias": 156 }
