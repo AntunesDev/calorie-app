@@ -1,0 +1,21 @@
+{
+    "name": "Controle de Calorias",
+    "short_name": "Calorias",
+    "description": "App de controle de calorias diário.",
+    "icons": [
+        {
+            "src": "/icons/icon-192x192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "/icons/icon-512x512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ],
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#faf8ff",
+    "theme_color": "#6357fa"
+}
