@@ -54,7 +54,7 @@ export default function AgendaAlimentar() {
           calorias_total: typeof res.calorias_total === "number" ? res.calorias_total : 0,
         });
         setSaving(false);
-        toast("Agenda atualizada!");
+        toast({ title: "Agenda atualizada!"});
       });
   }
 
@@ -72,19 +72,19 @@ export default function AgendaAlimentar() {
       .then(r => r.json())
       .then(res => {
         if (res.error) {
-          toast("Erro: " + res.error);
+          toast({ title: "Erro: " + res.error});
         } else if (res.item && isAlimentoValido(res.item)) {
           const novosAlimentos = [...(log.alimentos || []), res.item];
           setPrompt("");
           syncLog(novosAlimentos); // já salva e atualiza log!
         } else {
-          toast("Erro: Alimento inválido retornado pela IA.");
+          toast({ title: "Erro: Alimento inválido retornado pela IA."});
         }
         setSaving(false);
       })
       .catch(() => {
         setSaving(false);
-        toast("Erro ao adicionar alimento");
+        toast({ title: "Erro ao adicionar alimento"});
       });
   }
 

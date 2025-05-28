@@ -9,6 +9,10 @@ if (!MONGODB_URI) {
   );
 }
 
+declare global {
+  var mongoose: any;
+}
+
 let cached = global.mongoose || { conn: null, promise: null };
 
 async function dbConnect() {

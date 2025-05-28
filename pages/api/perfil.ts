@@ -2,7 +2,14 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import dbConnect from '../../lib/mongodb';
 import User from '../../models/User';
 
-function calcularTMB({ sexo, peso, altura, idade }) {
+type DadosTMB = {
+  sexo: string;
+  peso: number;
+  altura: number;
+  idade: number;
+};
+
+function calcularTMB({ sexo, peso, altura, idade }: DadosTMB): number {
   // Fórmula de Harris-Benedict (simplificada)
   if (sexo === 'Masculino') {
     return 88.36 + (13.4 * peso) + (4.8 * altura) - (5.7 * idade);
@@ -11,7 +18,7 @@ function calcularTMB({ sexo, peso, altura, idade }) {
   }
 }
 
-function calcularCaloriasManutencao(tmb, exercicio_horas) {
+function calcularCaloriasManutencao(tmb: number, exercicio_horas: number) {
   // Multiplicador de atividade física (leve, moderado, intenso)
   let fator = 1.375; // Exercício leve
   if (exercicio_horas >= 2) fator = 1.55; // Moderado
