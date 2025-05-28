@@ -36,8 +36,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const tmb = calcularTMB({ sexo, peso, altura, idade });
     const manutencao = calcularCaloriasManutencao(tmb, exercicio_horas);
 
-    // Sugerir déficit de 500kcal
-    const deficit = manutencao - 500;
+    // Sugerir déficit de 1500kcal
+    const deficit = manutencao - 1500;
 
     // Criar ou atualizar perfil (por simplicidade, 1 usuário só)
     let user = await User.findOne();
