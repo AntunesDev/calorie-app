@@ -9,7 +9,9 @@ import { toast } from "@/components/ui/use-toast";
 import { Trash2, PlusCircle } from "lucide-react";
 
 function hoje() {
-  return new Date().toISOString().slice(0, 10);
+  const now = new Date();
+  now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+  return now.toISOString().slice(0, 10);
 }
 
 export default function AgendaAlimentar() {

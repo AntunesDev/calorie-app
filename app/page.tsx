@@ -8,7 +8,9 @@ import { useRouter } from "next/navigation";
 import { User, PlusCircle } from "lucide-react"; // npm install lucide-react
 
 function hoje() {
-  return new Date().toISOString().slice(0, 10);
+  const now = new Date();
+  now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+  return now.toISOString().slice(0, 10);
 }
 
 function logsDaSemanaAtual(logs: any[]) {
