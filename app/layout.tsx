@@ -20,7 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             Controle de Calorias
           </span>
         </header>
-        <main className="mx-auto w-full max-w-lg px-3 pb-28 pt-10 mt-4">{children}</main>
+        <main className="mx-auto w-full max-w-lg px-3 pb-28 mt-4">{children}</main>
         <BottomNav />
         <Toaster />
       </body>

@@ -13,16 +13,11 @@ function hoje() {
 }
 
 export default function AgendaAlimentar() {
-  const [alimentos, setAlimentos] = useState<any[]>([]);
   const [dia, setDia] = useState(hoje());
   const [log, setLog] = useState<{ alimentos: any[]; calorias_total: number }>({ alimentos: [], calorias_total: 0 });
   const [prompt, setPrompt] = useState("");
   const [saving, setSaving] = useState(false);
   const router = useRouter();
-
-  useEffect(() => {
-    fetch('/api/alimentos').then(r => r.json()).then(setAlimentos);
-  }, []);
 
   useEffect(() => {
     fetch('/api/foodlog?data=' + dia)

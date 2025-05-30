@@ -9,7 +9,22 @@ function calcularCalorias(alimentos: any[]) {
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   await dbConnect();
 
-  if (req.method === 'GET') {
+  if (req.method === 'GET' && req.query.all === '1') {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const regex = new RegExp(`^${year}-${month}`); // YYYY-MM
+
+    const logs = await FoodLog.find({ data: { $regex: regex } });
+
+    res.status(200).json({
+      logs: logs.map(log => ({
+        data: log.data,
+        calorias_total: log.calorias_total
+      }))
+    });
+    return;
+  } else if (req.method === 'GET') {
     const { data } = req.query;
     let foodlog = await FoodLog.findOne({ data });
     if (foodlog) {
